@@ -1,0 +1,17 @@
+About:
+Simple, first-pass tool for plotting ranked entities in time series.
+
+
+Author:
+Nathan Schmidt <n@hinathan.com>
+
+
+License:
+MIT
+
+
+References:
+ I've been meaning to do this for a while, was reminded by an infochart by Pat Minczeski / Wall Street Journal
+  - http://online.wsj.com/media/Trade_partners.gif (ret 2011-02-25)
+ Similar concept but in Excel and built by hand (double eww)
+  - http://upload.wikimedia.org/wikipedia/commons/e/e5/Tour_De_France_2008_Standings_Chart.png  (ret 2011-02-25)
