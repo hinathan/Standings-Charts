@@ -1,8 +1,8 @@
 <h3>Ranked items (functionally identical widths)</h3>
-<canvas id="graph" height="500" width="700" style="border:1px solid black;"></canvas>
+<canvas id="graph" height="150" width="900" style="border:1px solid black;"></canvas>
 
 <h3>Ranked values (widths vary based on ranked value)</h3>
-<canvas id="graph2" height="400" width="700" style="border:1px solid black;"></canvas>
+<canvas id="graph2" height="400" width="900" style="border:1px solid black;"></canvas>
 
 <script src="lib/standings-chart.js"></script>
 <script type="text/javascript">
@@ -14,7 +14,7 @@ var items = [
 {name:"Japan",points:[1002,1000,1003,1002],fillStyle:"#443B33"},
 {name:"China",points:[1003,1003,1002,1001],fillStyle:"#D4022F"},
 ];
-var opts = {xgutter:'10%',ypadding:'2%',target:"graph"};
+var opts = {xgutter:'15%',ypadding:'0%',target:"graph",maxPoints:20};
 
 
 var items2 = [
@@ -24,7 +24,7 @@ var items2 = [
 {name:"China",points:[3,6,12,24,48],fillStyle:"#D4022F"},
 //{name:"bogo",points:[5,5,50,20],fillStyle:"rgba(100,100,100,.5)"},
 ];
-var opts2 = {xgutter:40,ypadding:5,target:"graph2"};
+var opts2 = {xgutter:'10%',ypadding:0,target:"graph2",stackedArea:false,useBezier:true,debugPoints:false};
 
 setTimeout(function() {
 	StandingsChart.init(items,opts);
@@ -33,50 +33,72 @@ setTimeout(function() {
 
 
 function addrand1() {
-	items.push({
+	for(i in items) {
+		items[i].points.push(1000+(Math.random() * 5));
+	}
+	var new_guy = {
 		name:"Moo" + Math.floor(Math.random() * 10000),
-		points:[
-		1000 + (Math.random() * 5),
-		1000 + (Math.random() * 5),
-		1000 + (Math.random() * 5),
-		1000 + (Math.random() * 5)
-		],
+		points:[],
 		fillStyle:"#" + Math.round(0xffffff * Math.random()).toString(16),
-	});
+	};
+
+	while(new_guy.fillStyle.length < 7) { new_guy.fillStyle += '0'; }
+
+	for(j=0;j<items[i].points.length;j++) {
+		new_guy.points.push(1000 + Math.random() * 5);
+	}
+	//items.push(new_guy);
 }
 
 
 function addrand2() {
 	var scale = Math.random() * 100;
-	items2.push({
+	for(i in items2) {
+		items2[i].points.push((Math.random() * scale));
+	}
+	return;
+	var new_guy = {
 		name:"Moo" + Math.floor(Math.random() * 10000),
-		points:[
-		(Math.random() * scale),
-		(Math.random() * scale),
-		(Math.random() * scale),
-		(Math.random() * scale),
-		(Math.random() * scale)
-		],
-		fillStyle:"#" + Math.round(0xffffff * Math.random()).toString(16),
-	});
+		points:[],
+		fillStyle:"#" + Math.round(0x9f9f9f * Math.random()).toString(16),
+	};
+	while(new_guy.fillStyle.length < 7) { new_guy.fillStyle += '0'; }
+
+	for(j=0;j<items2[i].points.length;j++) {
+		new_guy.points.push(Math.random() * scale);
+	}
+	items2.push(new_guy);
 }
 
-var c1 = 5;
+
+var c1 = 50;
+var delay = 100;
 setTimeout(function() {
-	if(c1--) { setTimeout(arguments.callee,1000); }
+	if(c1--) { setTimeout(arguments.callee,delay); }
 	addrand1();
 	StandingsChart.init(items,opts);
-	},1000);
+	},delay);
 
-var c2 = 5;
-setTimeout(function() {
-	if(c2--) { setTimeout(arguments.callee,1000); }
-	addrand2();
-	StandingsChart.init(items2,opts2);
-	},1000);
+if(0) {
+	var c2 = 10;
+	setTimeout(function() {
+		if(c2--) { setTimeout(arguments.callee,delay); }
+		addrand2();
+		StandingsChart.init(items2,opts2);
+		},delay);
+}
 
-
-
+if(0) {
+	width = 0;
+	setInterval(function() {
+		width += 5;
+		if(width > 1000) {
+			width = 0;
+		}
+		opts2.xgutter = width;
+		StandingsChart.init(items2,opts2);
+		},100);
+	}
 
 </script>
 
