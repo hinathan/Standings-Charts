@@ -15,7 +15,7 @@ var items = [
 {name:"Japan",points:[1002,1000,1003,1002],fillStyle:"#443B33"},
 {name:"China",points:[1003,1003,1002,1001],fillStyle:"#D4022F"},
 ];
-var opts = {xgutter:'15%',ypadding:'0%',target:"graph",maxPoints:20};
+var opts = {xgutter:'25%',ypadding:'0%',target:"graph",maxPoints:20};
 
 
 var items2 = [
@@ -25,7 +25,7 @@ var items2 = [
 {name:"China",points:[3,6,12,24,48],fillStyle:"#D4022F"},
 //{name:"bogo",points:[5,5,50,20],fillStyle:"rgba(100,100,100,.5)"},
 ];
-var opts2 = {xgutter:'10%',ypadding:0,target:"graph2",stackedArea:false,useBezier:true,debugPoints:false};
+var opts2 = {xgutter:'33%',ypadding:0,target:"graph2",stackedArea:false,useBezier:true,debugPoints:false};
 
 setTimeout(function() {
 	StandingsChart.init(items,opts);
@@ -72,8 +72,8 @@ function addrand2() {
 }
 
 
-var c1 = 50;
-var delay = 100;
+var c1 = 10;
+var delay = 500;
 setTimeout(function() {
 	if(c1--) { setTimeout(arguments.callee,delay); }
 	addrand1();
