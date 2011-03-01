@@ -1,43 +1,46 @@
-<h3>About</h3>Simple, first-pass tool for plotting ranked entities in time series.
+<h3>About</h3>Simple, first-pass tool for plotting ranked entities in time series. This is a variant of what appears to be called a 'bump chart'
 <h3>Author</h3>Nathan Schmidt (n@hinathan.com)
 <h3>License</h3>MIT
 <h3>References</h3>
 	<ul>
-		<li>I've been meaning to do this for a while, was reminded by an infochart by Pat Minczeski / Wall Street Journal
+		<li>Originally saw a chart in Tufte's books and elsewhere related to rowing, have been meaning to do something like that for a while
+			<ul>
+			<li><a href="http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001lh">http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001lh</a></li>
+			</ul>
+		</li>
+		<li>Proximate inspiration is a graphic (with new-to-me magnitudes mixed with the ranking) by Pat Minczeski / Wall Street Journal
 			<ul>
 			<li><a href="http://online.wsj.com/media/Trade_partners.gif">http://online.wsj.com/media/Trade_partners.gif</a> (ret 2011-02-25)</li>
 			</ul>
 		</li>
-		<li>Similar concept but in Excel and built by hand (double eww)
-			<ul>
-			<li><a href="http://upload.wikimedia.org/wikipedia/commons/e/e5/Tour_De_France_2008_Standings_Chart.png">http://upload.wikimedia.org/wikipedia/commons/e/e5/Tour_De_France_2008_Standings_Chart.png</a>  (ret 2011-02-25)</li>
-			</ul>
-		</li>
+		<li><a href="http://processtrends.com/toc_bumps_charts.htm">http://processtrends.com/toc_bumps_charts.htm</a></li>
+		<li><a href="http://junkcharts.typepad.com/junk_charts/bumps_chart/">http://junkcharts.typepad.com/junk_charts/bumps_chart/</a></li>
+		<li><a href="http://www.mcshane.org/bumps/">http://www.mcshane.org/bumps/</a></li>
 	</ul>
 	</li>
 </ul>
 <style>
 h3 { margin:0; }
 </style>
-<h3>Magnituded items</h3>
+<h3>Magnituded ranks</h3>
 <canvas id="netgraph" height="400" width="900" ></canvas>
 <h3>Ranked items</h3>
 <canvas id="netgraphrank" height="100" width="900" ></canvas>
 
-<h3>Ranked items (functionally identical widths)</h3>
+<h3>Ranked items</h3>
 <canvas id="graphbezier" height="100" width="900" ></canvas>
 
-<h3>Ranked items (functionally identical widths &mdash; no bezier)</h3>
+<h3>Ranked items (no bezier)</h3>
 <canvas id="graph" height="100" width="900" ></canvas>
 
-<h3>Ranked values (widths vary based on ranked value)</h3>
+<h3>Magnituded ranks</h3>
 <canvas id="graph2" height="360" width="900" ></canvas>
 
 <script src="lib/standings-chart.js"></script>
 <script src="lib/brewer-palettes.js"></script>
 <script type="text/javascript">
 
-var colors = paletteWithEntries(4).Spectral.slice(0);
+var colors = paletteWithEntries(4).RdBu.slice(0);
 
 var items = [
 {name:"Canada",points:[100000,20000,10000,20000],fillStyle:colors.pop()},
@@ -50,7 +53,7 @@ var items = [
 var opts = {xgutter:'25%',ypadding:'0%',target:"graphbezier",maxPoints:20,rankOnly:true};
 var optsnobez = {xgutter:'25%',ypadding:'0%',target:"graph",maxPoints:20,rankOnly:true,useBezier:false};
 
-var colors = paletteWithEntries(4).Spectral.slice(0);
+var colors = paletteWithEntries(4).BrBG.slice(0);
 
 var items2 = [
 {name:"Canada",points:[4,15,25,15,21],fillStyle:colors.pop()},
@@ -121,27 +124,6 @@ setTimeout(function() {
 	addrand1();
 	StandingsChart.init(items,opts);
 	},delay);
-
-if(0) {
-	var c2 = 10;
-	setTimeout(function() {
-		if(c2--) { setTimeout(arguments.callee,delay); }
-		addrand2();
-		StandingsChart.init(items2,opts2);
-		},delay);
-}
-
-if(0) {
-	width = 0;
-	setInterval(function() {
-		width += 5;
-		if(width > 1000) {
-			width = 0;
-		}
-		opts2.xgutter = width;
-		StandingsChart.init(items2,opts2);
-		},100);
-	}
 
 </script>
 
