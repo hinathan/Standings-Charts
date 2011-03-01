@@ -1,6 +1,29 @@
+<h3>About</h3>Simple, first-pass tool for plotting ranked entities in time series.
+<h3>Author</h3>Nathan Schmidt (n@hinathan.com)
+<h3>License</h3>MIT
+<h3>References</h3>
+	<ul>
+		<li>I've been meaning to do this for a while, was reminded by an infochart by Pat Minczeski / Wall Street Journal
+			<ul>
+			<li><a href="http://online.wsj.com/media/Trade_partners.gif">http://online.wsj.com/media/Trade_partners.gif</a> (ret 2011-02-25)</li>
+			</ul>
+		</li>
+		<li>Similar concept but in Excel and built by hand (double eww)
+			<ul>
+			<li><a href="http://upload.wikimedia.org/wikipedia/commons/e/e5/Tour_De_France_2008_Standings_Chart.png">http://upload.wikimedia.org/wikipedia/commons/e/e5/Tour_De_France_2008_Standings_Chart.png</a>  (ret 2011-02-25)</li>
+			</ul>
+		</li>
+	</ul>
+	</li>
+</ul>
 <style>
 h3 { margin:0; }
 </style>
+<h3>Magnituded items</h3>
+<canvas id="netgraph" height="400" width="900" ></canvas>
+<h3>Ranked items</h3>
+<canvas id="netgraphrank" height="100" width="900" ></canvas>
+
 <h3>Ranked items (functionally identical widths)</h3>
 <canvas id="graphbezier" height="100" width="900" ></canvas>
 
@@ -9,11 +32,6 @@ h3 { margin:0; }
 
 <h3>Ranked values (widths vary based on ranked value)</h3>
 <canvas id="graph2" height="360" width="900" ></canvas>
-
-<h3>Magnituded items</h3>
-<canvas id="netgraph" height="400" width="900" ></canvas>
-<h3>Ranked items</h3>
-<canvas id="netgraphrank" height="100" width="900" ></canvas>
 
 <script src="lib/standings-chart.js"></script>
 <script src="lib/brewer-palettes.js"></script>
