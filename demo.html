@@ -11,7 +11,7 @@
 		<li>Proximate inspiration is a graphic (with new-to-me magnitudes mixed with the ranking) by Pat Minczeski / Wall Street Journal
 			<ul>
 			<li><a href="http://online.wsj.com/media/Trade_partners.gif">http://online.wsj.com/media/Trade_partners.gif</a> (ret 2011-02-25)</li>
-1			</ul>
+			</ul>
 		</li>
 		<li><a href="http://processtrends.com/toc_bumps_charts.htm">http://processtrends.com/toc_bumps_charts.htm</a></li>
 		<li><a href="http://junkcharts.typepad.com/junk_charts/bumps_chart/">http://junkcharts.typepad.com/junk_charts/bumps_chart/</a></li>
@@ -83,6 +83,8 @@ var itemsFromInfographicImports = [
 {name:"France",points:[5,11,14]},
 {name:"Hong Kong",points:[3.25,0.25,0.25]},
 {name:"Taiwan",points:[8.25,14.5,13.25]},
+{name:"Venezuela",points:[3.75,6.25,12.5]},
+{name:"Nigeria",points:[2.25,3.5,11.5]},
 {name:"China",points:[6.25,37,133.5]},
 ];
 
@@ -98,6 +100,8 @@ var cmap = {
 	"Taiwan":"#7DB877",
 	"Brazil":"#7DB877",
 	"China":"#D4022F",
+	"Venezuela":"#DD7A76",
+	"Nigeria":"#5D257C",
 };
 
 for(i=0;i<itemsFromInfographicExports.length;i++) {
@@ -106,7 +110,7 @@ for(i=0;i<itemsFromInfographicExports.length;i++) {
 for(i=0;i<itemsFromInfographicImports.length;i++) {
 	itemsFromInfographicImports[i].fillStyle=cmap[itemsFromInfographicImports[i].name];
 }
-var optsinfographic = {xgutter:'30%',ypadding:'3',target:"infographicexports",maxPoints:20,rankOnly:false,useBezier:false};
+var optsinfographic = {minPitch:10,xgutter:'30%',ypadding:'3',target:"infographicexports",maxPoints:20,rankOnly:false,useBezier:false};
 
 
 var opts = {xgutter:'25%',ypadding:'0%',target:"graphbezier",maxPoints:20,rankOnly:true};
