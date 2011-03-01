@@ -1,11 +1,19 @@
+<style>
+h3 { margin:0; }
+</style>
 <h3>Ranked items (functionally identical widths)</h3>
-<canvas id="graphbezier" height="100" width="900" style="border:1px solid black;"></canvas>
+<canvas id="graphbezier" height="100" width="900" ></canvas>
 
 <h3>Ranked items (functionally identical widths &mdash; no bezier)</h3>
-<canvas id="graph" height="100" width="900" style="border:1px solid black;"></canvas>
+<canvas id="graph" height="100" width="900" ></canvas>
 
 <h3>Ranked values (widths vary based on ranked value)</h3>
-<canvas id="graph2" height="400" width="900" style="border:1px solid black;"></canvas>
+<canvas id="graph2" height="360" width="900" ></canvas>
+
+<h3>Magnituded items</h3>
+<canvas id="netgraph" height="400" width="900" ></canvas>
+<h3>Ranked items</h3>
+<canvas id="netgraphrank" height="100" width="900" ></canvas>
 
 <script src="lib/standings-chart.js"></script>
 <script src="lib/brewer-palettes.js"></script>
@@ -14,10 +22,10 @@
 var colors = paletteWithEntries(4).Spectral.slice(0);
 
 var items = [
-{name:"Canada",points:[1,2,1,2],fillStyle:colors.pop()},
-{name:"Mexico",points:[2,3,4,1],fillStyle:colors.pop()},
-{name:"Japan",points:[3,1,4,3],fillStyle:colors.pop()},
-{name:"China",points:[4,4,3,2],fillStyle:colors.pop()},
+{name:"Canada",points:[100000,20000,10000,20000],fillStyle:colors.pop()},
+{name:"Mexico",points:[20000,30000,40000,10000],fillStyle:colors.pop()},
+{name:"Japan",points:[30000,10000,40000,30000],fillStyle:colors.pop()},
+{name:"China",points:[40000,40000,30000,20000],fillStyle:colors.pop()},
 ];
 
 
@@ -35,10 +43,17 @@ var items2 = [
 ];
 var opts2 = {xgutter:'33%',ypadding:10,target:"graph2",stackedArea:false,useBezier:true,debugPoints:false};
 
+var items3 = [{"name":"Abstract","points":[534,172,1,439,222],"fillStyle":"#66c2a5"},{"name":"Burnished","points":[17481,20574,21835,18992,12981],"fillStyle":"#fc8d62"},{"name":"Chortle","points":[58118,47260,57831,66583,51079],"fillStyle":"#8da0cb"},{"name":"Dissonant","points":[13002,16289,7747,7039,3252],"fillStyle":"#e78ac3"},{"name":"Elephant","points":[1056,3225,3665,2590,1373],"fillStyle":"#a6d854"},{"name":"Fortunate","points":[1,1,1,1,2],"fillStyle":"#ffd92f"},{"name":"Goodyear","points":[12494,4594,28446,12597,41153],"fillStyle":"#e5c494"},{"name":"Hesitant","points":[19710,32399,29923,21746,18192],"fillStyle":"#b3b3b3"}];
+
+var opts3 = {xgutter:'25%',ypadding:'5%',target:"netgraph",stackedArea:false,useBezier:false,debugPoints:false};
+var opts4 = {xgutter:'25%',ypadding:'5%',target:"netgraphrank",stackedArea:false,useBezier:false,rankOnly:true};
+
 setTimeout(function() {
 	StandingsChart.init(items,opts);
 	StandingsChart.init(items,optsnobez);
 	StandingsChart.init(items2,opts2);
+	StandingsChart.init(items3,opts3);
+	StandingsChart.init(items3,opts4);
 },10);
 
 
