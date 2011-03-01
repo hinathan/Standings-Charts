@@ -11,7 +11,7 @@
 		<li>Proximate inspiration is a graphic (with new-to-me magnitudes mixed with the ranking) by Pat Minczeski / Wall Street Journal
 			<ul>
 			<li><a href="http://online.wsj.com/media/Trade_partners.gif">http://online.wsj.com/media/Trade_partners.gif</a> (ret 2011-02-25)</li>
-			</ul>
+1			</ul>
 		</li>
 		<li><a href="http://processtrends.com/toc_bumps_charts.htm">http://processtrends.com/toc_bumps_charts.htm</a></li>
 		<li><a href="http://junkcharts.typepad.com/junk_charts/bumps_chart/">http://junkcharts.typepad.com/junk_charts/bumps_chart/</a></li>
@@ -22,6 +22,12 @@
 <style>
 h3 { margin:0; }
 </style>
+
+<h3>Like the WSJ infographic</h3>
+<canvas id="infographicexports" height="450" width="400" ></canvas>
+<canvas id="infographicimports" height="550" width="400" ></canvas>
+
+
 <h3>Magnituded ranks</h3>
 <canvas id="netgraph" height="400" width="900" ></canvas>
 <h3>Ranked items</h3>
@@ -50,6 +56,59 @@ var items = [
 ];
 
 
+var itemsFromInfographicExports = [
+{name:"Canada",points:[31,65,91]},
+{name:"Mexico",points:[11,41,59.5]},
+{name:"Japan",points:[18,24,22]},
+{name:"UK",points:[9,15,18]},
+{name:"Germany",points:[7,11,18]},
+{name:"South Korea",points:[5,10.5,14]},
+{name:"Brazil",points:[2.5,6,13.5]},
+{name:"Netherlands",points:[5.25,8.25,13.25]},
+{name:"Singapore",points:[3.25,7.5,11]},
+{name:"France",points:[5.25,7.5,10]},
+{name:"Hong Kong",points:[2.25,5.5,10]},
+{name:"Taiwan",points:[4.25,9.25,9.25]},
+{name:"China",points:[2.25,6.25,33.75]},
+];
+
+var itemsFromInfographicImports = [
+{name:"Canada",points:[32.5,84,101]},
+{name:"Mexico",points:[11,48.25,83.5]},
+{name:"Japan",points:[33,53.5,43]},
+{name:"UK",points:[7,15.5,18.5]},
+{name:"Germany",points:[10.5,22,30.5]},
+{name:"South Korea",points:[7,14.5,18]},
+{name:"Brazil",points:[3.5,0.25,0.25]},
+{name:"France",points:[5,11,14]},
+{name:"Hong Kong",points:[3.25,0.25,0.25]},
+{name:"Taiwan",points:[8.25,14.5,13.25]},
+{name:"China",points:[6.25,37,133.5]},
+];
+
+var cmap = {
+	"Canada":"#6A89BB",
+	"Japan":"#443B33",
+	"Mexico":"#004A94",
+	"UK":"#F0D252",
+	"Germany":"#98A9CA",
+	"South Korea":"#119D3F",
+	"France":"#004A94",
+	"Netherlands":"#2C67A7",
+	"Taiwan":"#7DB877",
+	"Brazil":"#7DB877",
+	"China":"#D4022F",
+};
+
+for(i=0;i<itemsFromInfographicExports.length;i++) {
+	itemsFromInfographicExports[i].fillStyle=cmap[itemsFromInfographicExports[i].name];
+}
+for(i=0;i<itemsFromInfographicImports.length;i++) {
+	itemsFromInfographicImports[i].fillStyle=cmap[itemsFromInfographicImports[i].name];
+}
+var optsinfographic = {xgutter:'30%',ypadding:'3',target:"infographicexports",maxPoints:20,rankOnly:false,useBezier:false};
+
+
 var opts = {xgutter:'25%',ypadding:'0%',target:"graphbezier",maxPoints:20,rankOnly:true};
 var optsnobez = {xgutter:'25%',ypadding:'0%',target:"graph",maxPoints:20,rankOnly:true,useBezier:false};
 
@@ -75,6 +134,9 @@ setTimeout(function() {
 	StandingsChart.init(items2,opts2);
 	StandingsChart.init(items3,opts3);
 	StandingsChart.init(items3,opts4);
+	StandingsChart.init(itemsFromInfographicExports,optsinfographic);
+	optsinfographic.target = "infographicimports";
+	StandingsChart.init(itemsFromInfographicImports,optsinfographic);
 },10);
 
 
@@ -82,43 +144,16 @@ function addrand1() {
 	for(i in items) {
 		items[i].points.push(1000+(Math.random() * 5));
 	}
-	var new_guy = {
-		name:"Moo" + Math.floor(Math.random() * 10000),
-		points:[],
-		fillStyle:"#" + Math.round(0xffffff * Math.random()).toString(16),
-	};
-
-	while(new_guy.fillStyle.length < 7) { new_guy.fillStyle += '0'; }
-
 	for(j=0;j<items[i].points.length;j++) {
 		new_guy.points.push(Math.random() * 5);
 	}
-	//items.push(new_guy);
 }
 
 
-function addrand2() {
-	var scale = Math.random() * 100;
-	for(i in items2) {
-		items2[i].points.push((Math.random() * scale));
-	}
-	return;
-	var new_guy = {
-		name:"Moo" + Math.floor(Math.random() * 10000),
-		points:[],
-		fillStyle:"#" + Math.round(0x9f9f9f * Math.random()).toString(16),
-	};
-	while(new_guy.fillStyle.length < 7) { new_guy.fillStyle += '0'; }
-
-	for(j=0;j<items2[i].points.length;j++) {
-		new_guy.points.push(Math.random() * scale);
-	}
-	items2.push(new_guy);
-}
 
 
-var c1 = 10;
-var delay = 500;
+var c1 = 5;
+var delay = 1000;
 setTimeout(function() {
 	if(c1--) { setTimeout(arguments.callee,delay); }
 	addrand1();
