@@ -1,3 +1,14 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<title>Standings-Charts</title>
+<meta name="description" content="Simple, first-pass tool for plotting ranked entities in time series">
+<meta name="keywords" content="canvas, chart, javascript">
+<meta name="author" content="hinathan">
+<script src="ext/headjs/dist/head.min.js"></script>
+</head>
+
 <h3>About</h3>Simple, first-pass tool for plotting ranked entities in time series. This is a variant of what appears to be called a 'bump chart'
 <h3>Author</h3>Nathan Schmidt (n@hinathan.com)
 <h3>License</h3>MIT
@@ -16,9 +27,7 @@
 		<li><a href="http://processtrends.com/toc_bumps_charts.htm">http://processtrends.com/toc_bumps_charts.htm</a></li>
 		<li><a href="http://junkcharts.typepad.com/junk_charts/bumps_chart/">http://junkcharts.typepad.com/junk_charts/bumps_chart/</a></li>
 		<li><a href="http://www.mcshane.org/bumps/">http://www.mcshane.org/bumps/</a></li>
-	</ul>
-	</li>
-</ul>
+  </ul>
 <style>
 h3 { margin:0; }
 </style>
@@ -42,18 +51,7 @@ h3 { margin:0; }
 <h3>Magnituded ranks</h3>
 <canvas id="graph2" height="360" width="900" ></canvas>
 
-<script src="lib/standings-chart.js"></script>
-<script src="lib/brewer-palettes.js"></script>
 <script type="text/javascript">
-
-var colors = paletteWithEntries(4).RdBu.slice(0);
-
-var items = [
-{name:"Canada",points:[100000,20000,10000,20000],fillStyle:colors.pop()},
-{name:"Mexico",points:[20000,30000,40000,10000],fillStyle:colors.pop()},
-{name:"Japan",points:[30000,10000,40000,30000],fillStyle:colors.pop()},
-{name:"China",points:[40000,40000,30000,20000],fillStyle:colors.pop()},
-];
 
 
 var itemsFromInfographicExports = [
@@ -116,23 +114,33 @@ var optsinfographic = {minPitch:10,xgutter:'30%',ypadding:'3',target:"infographi
 var opts = {xgutter:'25%',ypadding:'0%',target:"graphbezier",maxPoints:20,rankOnly:true};
 var optsnobez = {xgutter:'25%',ypadding:'0%',target:"graph",maxPoints:20,rankOnly:true,useBezier:false};
 
-var colors = paletteWithEntries(4).BrBG.slice(0);
+function buildCharts() {
 
-var items2 = [
-{name:"Canada",points:[4,15,25,15,21],fillStyle:colors.pop()},
-{name:"Mexico",points:[4,51,24,25,32],fillStyle:colors.pop()},
-{name:"Japan",points:[10,25,40,33,43],fillStyle:colors.pop()},
-{name:"China",points:[3,6,12,24,48],fillStyle:colors.pop()},
-//{name:"bogo",points:[5,5,50,20],fillStyle:"rgba(100,100,100,.5)"},
-];
-var opts2 = {xgutter:'33%',ypadding:10,target:"graph2",stackedArea:false,useBezier:true,debugPoints:false};
+	var colors = paletteWithEntries(4).RdBu.slice(0);
 
-var items3 = [{"name":"Abstract","points":[534,172,1,439,222],"fillStyle":"#66c2a5"},{"name":"Burnished","points":[17481,20574,21835,18992,12981],"fillStyle":"#fc8d62"},{"name":"Chortle","points":[58118,47260,57831,66583,51079],"fillStyle":"#8da0cb"},{"name":"Dissonant","points":[13002,16289,7747,7039,3252],"fillStyle":"#e78ac3"},{"name":"Elephant","points":[1056,3225,3665,2590,1373],"fillStyle":"#a6d854"},{"name":"Fortunate","points":[1,1,1,1,2],"fillStyle":"#ffd92f"},{"name":"Goodyear","points":[12494,4594,28446,12597,41153],"fillStyle":"#e5c494"},{"name":"Hesitant","points":[19710,32399,29923,21746,18192],"fillStyle":"#b3b3b3"}];
+	var items = [
+	{name:"Canada",points:[100000,20000,10000,20000],fillStyle:colors.pop()},
+	{name:"Mexico",points:[20000,30000,40000,10000],fillStyle:colors.pop()},
+	{name:"Japan",points:[30000,10000,40000,30000],fillStyle:colors.pop()},
+	{name:"China",points:[40000,40000,30000,20000],fillStyle:colors.pop()},
+	];
 
-var opts3 = {xgutter:'25%',ypadding:'5%',target:"netgraph",stackedArea:false,useBezier:false,debugPoints:false};
-var opts4 = {xgutter:'25%',ypadding:'5%',target:"netgraphrank",stackedArea:false,useBezier:false,rankOnly:true};
+	var colors = paletteWithEntries(4).BrBG.slice(0);
 
-setTimeout(function() {
+	var items2 = [
+	{name:"Canada",points:[4,15,25,15,21],fillStyle:colors.pop()},
+	{name:"Mexico",points:[4,51,24,25,32],fillStyle:colors.pop()},
+	{name:"Japan",points:[10,25,40,33,43],fillStyle:colors.pop()},
+	{name:"China",points:[3,6,12,24,48],fillStyle:colors.pop()},
+	//{name:"bogo",points:[5,5,50,20],fillStyle:"rgba(100,100,100,.5)"},
+	];
+	var opts2 = {xgutter:'33%',ypadding:10,target:"graph2",stackedArea:false,useBezier:true,debugPoints:false};
+
+	var items3 = [{"name":"Abstract","points":[534,172,1,439,222],"fillStyle":"#66c2a5"},{"name":"Burnished","points":[17481,20574,21835,18992,12981],"fillStyle":"#fc8d62"},{"name":"Chortle","points":[58118,47260,57831,66583,51079],"fillStyle":"#8da0cb"},{"name":"Dissonant","points":[13002,16289,7747,7039,3252],"fillStyle":"#e78ac3"},{"name":"Elephant","points":[1056,3225,3665,2590,1373],"fillStyle":"#a6d854"},{"name":"Fortunate","points":[1,1,1,1,2],"fillStyle":"#ffd92f"},{"name":"Goodyear","points":[12494,4594,28446,12597,41153],"fillStyle":"#e5c494"},{"name":"Hesitant","points":[19710,32399,29923,21746,18192],"fillStyle":"#b3b3b3"}];
+
+	var opts3 = {xgutter:'25%',ypadding:'5%',target:"netgraph",stackedArea:false,useBezier:false,debugPoints:false};
+	var opts4 = {xgutter:'25%',ypadding:'5%',target:"netgraphrank",stackedArea:false,useBezier:false,rankOnly:true};
+
 	StandingsChart.init(items,opts);
 	StandingsChart.init(items,optsnobez);
 	StandingsChart.init(items2,opts2);
@@ -141,8 +149,22 @@ setTimeout(function() {
 	StandingsChart.init(itemsFromInfographicExports,optsinfographic);
 	optsinfographic.target = "infographicimports";
 	StandingsChart.init(itemsFromInfographicImports,optsinfographic);
-},10);
 
+	var c1 = 5;
+	var delay = 1000;
+	if(0) {
+		setTimeout
+		(function() {
+			if(c1--) {
+				setTimeout(arguments.callee,delay);
+			}
+			addrand1();
+			StandingsChart.init(items,opts);
+			},
+			delay);
+
+		}
+};
 
 function addrand1() {
 	for(i in items) {
@@ -152,14 +174,8 @@ function addrand1() {
 
 
 
-
-var c1 = 5;
-var delay = 1000;
-setTimeout(function() {
-	if(c1--) { setTimeout(arguments.callee,delay); }
-	addrand1();
-	StandingsChart.init(items,opts);
-	},delay);
-
+ head.js("lib/standings-chart.js","lib/brewer-palettes.js", function() {
+	buildCharts();
+	} );
 </script>
 

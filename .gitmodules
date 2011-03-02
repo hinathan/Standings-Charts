@@ -1,0 +1,3 @@
+[submodule "ext/headjs"]
+	path = ext/headjs
+	url = https://github.com/headjs/headjs.git
