@@ -53,11 +53,13 @@ function buildChart(a) {
 
 }
 
-
+if(0) {
 head.js("demo_datasets.js","lib/standings-chart.js", function() {
 	for(a in demo_datasets) {
 		buildChart(demo_datasets[a]);
 	}
 });
-
+}
 </script>
+<script src="demo_datasets.js"></script><script src="lib/standings-chart.js"></script><script> //demo_datasets = [demo_datasets.shift()];
+for(a in demo_datasets) { buildChart(demo_datasets[a]); } </script>
