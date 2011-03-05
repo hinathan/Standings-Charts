@@ -14,12 +14,22 @@ var colormap = {
 	"Nigeria":"#5D257C",
 };
 
+
+var colormap_alt = {
+	"Burnished":"#6A89BB",
+	"Dissonant":"#D4022F",
+	"Goodyear":"#119D3F",
+	"Hesitant":"#F0D252",
+};
+
+
 var demo_datasets = [
 {
 	title:"Exports (Commerce department via WSJ)",
 	xgutter:'30%',
 	ypadding:'3',
 	useBezier:false,
+	labels:{position:'out'},
 	useColors:colormap,
 	data:{
 		"Canada":[31,65,91],
@@ -118,5 +128,37 @@ var demo_datasets = [
 		"Goodyear":[12494,4594,28446,12597,41153],
 		"Hesitant":[19710,32399,29923,21746,18192],
 	},
+},
+{
+	title:"Small map, straight lines",
+	xgutter:'25%',
+	ypadding:'5%',
+	height:100,
+	width:200,
+	useBezier:false,
+	useColors:colormap_alt,
+	data:{
+		"Dissonant":[13002,16289,7747,7039,3252],
+		"Burnished":[17481,20574,21835,18992,12981],
+		"Goodyear":[12494,4594,28446,12597,41153],
+		"Hesitant":[19710,32399,29923,21746,18192],
+	},
+},
+{
+	title:"Small map, ranks, Bezier curves",
+	xgutter:'25%',
+	ypadding:'5%',
+	height:100,
+	width:200,
+	useBezier:true,
+	rankOnly:true,
+	useColors:colormap_alt,
+	data:{
+		"Dissonant":[13002,16289,7747,7039,3252],
+		"Burnished":[17481,20574,21835,18992,12981],
+		"Goodyear":[12494,4594,28446,12597,41153],
+		"Hesitant":[19710,32399,29923,21746,18192],
+	},
 }
+
 ];
