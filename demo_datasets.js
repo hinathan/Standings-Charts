@@ -21,7 +21,15 @@ var colormap_alt = {
 	"Goodyear":"#119D3F",
 	"Hesitant":"#F0D252",
 };
-
+var colormap_food = {
+	"Meats":"#1E4E49",
+	"Fruits & Vegetables":"#2B6E68",
+	"Grains & Baked Goods":"#79B7B3",
+	"Dairy Products":"#A3811E",
+	"Processed Foods & Sweets":"#EABB2A",
+	"Beverages":"#F2DC88",
+	"Other Foods":"#F8EFC0",
+}
 
 var demo_datasets = [
 {
@@ -46,6 +54,23 @@ var demo_datasets = [
 		"Taiwan":[4.25,9.25,9.25],
 		"China":[2.25,6.25,33.75],
 	}
+},
+{
+	title:"Money Spent On Groceries (BLS via NPR / Lam Thuy Vo)",
+	xgutter:'30%',
+	ypadding:'3',
+	useBezier:false,
+	labels:{position:'in'},
+	useColors:colormap_food,
+	data:{
+		"Meats":[31.3,21.5],
+		"Fruits & Vegetables":[14.5,14.6],
+		"Grains & Baked Goods":[13.2,14.4],
+		"Dairy Products":[13.2,10.6],
+		"Processed Foods & Sweets":[11.6,22.9],
+		"Beverages":[11.0,11.1],
+		"Other Foods":[5.3,5.1],
+	},
 },
 {
 	title:"Imports (Commerce department via WSJ)",

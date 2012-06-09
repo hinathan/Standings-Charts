@@ -1,15 +1,15 @@
 <!doctype html>
 <html class="no-js">
 <head>
-<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Standings-Charts</title>
 <meta name="description" content="Simple, first-pass tool for plotting ranked entities in time series">
 <meta name="keywords" content="canvas, chart, javascript">
 <meta name="author" content="hinathan">
-<script src="ext/headjs/dist/head.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 </head>
 
-<h3>About</h3>Simple, first-pass tool for plotting ranked entities in time series. This is a variant of what appears to be called a 'bump chart'
+<h3>About</h3>Simple, first-pass tool for plotting ranked entities in time series. This is a variant of what appears to be called a 'bump chart' (or 'slope graph')
 <h3>Author</h3>Nathan Schmidt (n@hinathan.com)
 <h3>License</h3>MIT
 <h3>References</h3>
@@ -27,6 +27,9 @@
 		<li><a href="http://processtrends.com/toc_bumps_charts.htm">http://processtrends.com/toc_bumps_charts.htm</a></li>
 		<li><a href="http://junkcharts.typepad.com/junk_charts/bumps_chart/">http://junkcharts.typepad.com/junk_charts/bumps_chart/</a></li>
 		<li><a href="http://www.mcshane.org/bumps/">http://www.mcshane.org/bumps/</a></li>
+		<li><a href="http://i.minus.com/ipmgYxzHZNb7a.jpg">http://i.minus.com/ipmgYxzHZNb7a.jpg</a> random Reddit link</li>
+		<li><a href="http://lamivo.blogspot.com/2012/05/50-years-of-us-government-spending.html">http://lamivo.blogspot.com/2012/05/50-years-of-us-government-spending.html</a></li>
+		<li><a href="http://charliepark.org/slopegraphs/">'Slope graphs' @ charliepark.org</a></li>
   </ul>
 <style>
 h3 { margin:0; }
@@ -51,14 +54,6 @@ function buildChart(a) {
 	document.body.appendChild(canvas);
 	StandingsChart.init(a,canvas);
 
-}
-
-if(0) {
-head.js("demo_datasets.js","lib/standings-chart.js", function() {
-	for(a in demo_datasets) {
-		buildChart(demo_datasets[a]);
-	}
-});
 }
 </script>
 <script src="demo_datasets.js"></script><script src="lib/standings-chart.js"></script><script> //demo_datasets = [demo_datasets.shift()];
